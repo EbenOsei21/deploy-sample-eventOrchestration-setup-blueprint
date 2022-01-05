@@ -1,0 +1,12 @@
+{
+  "title": "cardNumber",
+  "description": "Takes in a cardnumber and returns paymentId",
+  "type": "object",
+  "properties": {
+    "cardNumber": {
+      "description": "9 digit card number",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

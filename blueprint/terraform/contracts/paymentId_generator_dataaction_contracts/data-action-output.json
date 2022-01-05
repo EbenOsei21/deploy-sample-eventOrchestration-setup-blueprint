@@ -1,0 +1,12 @@
+{
+  "title": "paymentId",
+  "description": "random number generated",
+  "type": "object",
+  "properties": {
+    "paymentId": {
+      "description": "Random number generated as paymentId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

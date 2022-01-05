@@ -1,0 +1,14 @@
+{
+  "title": "paymentInfo",
+  "type": "object",
+  "required": ["paymentId", "phoneNumber"],
+  "properties": {
+    "paymentId": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
