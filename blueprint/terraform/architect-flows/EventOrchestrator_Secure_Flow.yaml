@@ -1,7 +1,7 @@
 secureCall:
   name: EventOrchestrator Secure Flow
   description: Get payment information from users
-  division: New Home
+  division: New Home                                #TODO Remove this line as most devs will not have a division in them
   startUpRef: "/secureCall/tasks/task[Task_10]"
   defaultLanguage: en-us
   supportedLanguages:

@@ -137,6 +137,7 @@ The workflow id will be `917dcc65-5adb-4d61-a5c7-d63418ae7dd2`
 
 Save your changes and run (make sure your terminal working directory is set to the location of the trigger.ts file):
 
+#TODO Can node execute typescript directly now. Regardless you need to have this execute within Terraform
 ```bash
 node trigger.ts
 ```

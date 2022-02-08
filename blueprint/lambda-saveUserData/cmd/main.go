@@ -1,5 +1,6 @@
 package main
 
+//TODO - You need to make sure provide instructions in the blueprint's index.md file with directions on how to compile this Lambda in case they need to provide this in here.
 import (
 	"bytes"
 	"fmt"
@@ -16,8 +17,9 @@ var (
 )
 
 const (
-	REGION = "us-east-1"
-	BUCKET_NAME = "paymentdatabucket"
+	REGION = "us-east-1"                        //TODO These should not be should be passed in as environment variables to the lambda.  By hardcoding them your Lambda is only going 
+	BUCKET_NAME = "paymentdatabucket"           //to be able read from this bucket and us-east-1.  This will break anyone else.  Dont forget to set those environment variables when you 
+	                                            //deploy the lambda using the AWS Terraform region.  The Terraform component should not have these values hard coded.
 )
 
 func init() {

@@ -10,8 +10,8 @@ resource "aws_lambda_function" "lambda_function" {
 }
 
 resource "aws_s3_bucket" "paymentdata_bucket" {
-  bucket = "paymentdatabucket"
-  acl    = "private"
+  bucket = "paymentdatabucket" #TODO This should be defined as an input variable that can be defined by the end user.  Bucket names are global so if someone else tried to run this 
+  acl    = "private"           #code, it would fail because the bucket name must be uniqueu.
 
   tags = {
     Name        = "paymentdata"

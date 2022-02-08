@@ -8,5 +8,5 @@ terraform {
 }
 
 provider "aws" {
-region     = "us-east-1"
+  region = "us-east-1" #TODO Make sure you document this value in the index.md because a customer downloading this might be in another AWS region and having this undocumented would be bad.
 }
