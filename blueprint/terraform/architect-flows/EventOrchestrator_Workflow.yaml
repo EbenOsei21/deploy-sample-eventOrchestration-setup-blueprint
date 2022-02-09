@@ -1,7 +1,7 @@
 workflow:
   name: EventOrchestra Workflow
   description: Blue print to demonstrate Event Orchestration
-  division: New Home
+  division: New Home                                            #TODO Remove this line as most devs will not have a division in them
   startUpRef: "/workflow/states/state[Initial State_11]"
   defaultLanguage: en-us
   supportedLanguages:

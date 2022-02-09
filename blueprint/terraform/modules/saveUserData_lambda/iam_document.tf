@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "lambda_execution_policy_document" {
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
       "logs:PutLogEvents",
-      "s3:PutObject",
+      "s3:PutObject", #TODO Do you ever read anything out of the bucket or do you just store it there.  If you read anything you need to make sure you have read access
     ]
     resources = ["*"] // Should be specific ARN
   }
@@ -43,7 +43,7 @@ data "aws_iam_policy_document" "lambda_trustrelationship_policy_document" {
     actions = ["sts:AssumeRole"]
     condition {
       test     = "StringEquals"
-      values   = [var.organizationId] 
+      values   = [var.organizationId]
       variable = "sts:ExternalId"
     }
 

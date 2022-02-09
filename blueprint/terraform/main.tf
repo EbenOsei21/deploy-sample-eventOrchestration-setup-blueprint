@@ -5,10 +5,10 @@ is used by Genesys Cloud to invoke the lambda in
 */
 module "lambda_saveUserData" {
   source                  = "./modules/saveUserData_lambda"
-  environment             = "dev"
-  prefix                  = "saveUserData"
-  organizationId          = "8d6f6281-c096-4dab-b194-a6f1667d7dd4"
-  aws_region              = "us-east-1"
+  environment             = "dev"                                  #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
+  prefix                  = "saveUserData"                         #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
+  organizationId          = "8d6f6281-c096-4dab-b194-a6f1667d7dd4" #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
+  aws_region              = "us-east-1"                            #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
   lambda_zip_file         = data.archive_file.saveUserData_lambda_zip.output_path
   lambda_source_code_hash = data.archive_file.saveUserData_lambda_zip.output_base64sha256
 }
@@ -21,8 +21,8 @@ module "lambda_generate_paymentId" {
   source                  = "./modules/paymentIdGenerator_lambda"
   environment             = "dev"
   prefix                  = "generate_paymentId"
-  organizationId          = "8d6f6281-c096-4dab-b194-a6f1667d7dd4"
-  aws_region              = "us-east-1"
+  organizationId          = "8d6f6281-c096-4dab-b194-a6f1667d7dd4" #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
+  aws_region              = "us-east-1"                            #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
   lambda_zip_file         = data.archive_file.paymentId_lambda_zip.output_path
   lambda_source_code_hash = data.archive_file.paymentId_lambda_zip.output_base64sha256
 }
@@ -33,15 +33,15 @@ module "lambda_generate_paymentId" {
 */
 module "saveUserData_lambda_data_integration" {
   source                            = "git::https://github.com/GenesysCloudDevOps/integration-lambda-module.git?ref=main"
-  environment                       = "dev"
-  prefix                            = "saveUserData"
+  environment                       = "dev"          #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
+  prefix                            = "saveUserData" #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
   data_integration_trusted_role_arn = module.lambda_saveUserData.data_integration_trusted_role_arn
 }
 
 module "paymentId_generator_lambda_data_integration" {
   source                            = "git::https://github.com/GenesysCloudDevOps/integration-lambda-module.git?ref=main"
-  environment                       = "dev"
-  prefix                            = "generate_paymentId"
+  environment                       = "dev"                #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
+  prefix                            = "generate_paymentId" #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
   data_integration_trusted_role_arn = module.lambda_generate_paymentId.data_integration_trusted_role_arn
 }
 
@@ -50,8 +50,8 @@ module "paymentId_generator_lambda_data_integration" {
 */
 module "saveUserData_lambda_data_action" {
   source                 = "git::https://github.com/GenesysCloudDevOps/data-action-lambda-module.git?ref=main"
-  environment            = "dev"
-  prefix                 = "save_user_data"
+  environment            = "dev"            #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
+  prefix                 = "save_user_data" #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
   secure_data_action     = false
   genesys_integration_id = module.saveUserData_lambda_data_integration.genesys_integration_id
   lambda_arn             = module.lambda_saveUserData.lambda_arn
@@ -62,8 +62,8 @@ module "saveUserData_lambda_data_action" {
 
 module "paymentID_lambda_data_action" {
   source                 = "git::https://github.com/GenesysCloudDevOps/data-action-lambda-module.git?ref=main"
-  environment            = "dev"
-  prefix                 = "generate_paymentId"
+  environment            = "dev"                #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
+  prefix                 = "generate_paymentId" #TODO I would pass these in as variables and pass these use a dev.tfvars.auto
   secure_data_action     = false
   genesys_integration_id = module.paymentId_generator_lambda_data_integration.genesys_integration_id
   lambda_arn             = module.lambda_generate_paymentId.lambda_arn

@@ -1,6 +1,6 @@
 inboundCall:
   name: EventOrchestrator Flow
-  division: New Home
+  division: New Home                        #TODO Remove this line as most devs will not have a division in them
   startUpRef: "/inboundCall/menus/menu[Main Menu_10]"
   defaultLanguage: en-us
   supportedLanguages:
