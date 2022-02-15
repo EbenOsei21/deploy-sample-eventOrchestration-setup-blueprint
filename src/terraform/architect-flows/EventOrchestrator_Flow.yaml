@@ -1,0 +1,151 @@
+inboundCall:
+  name: EventOrchestrator Flow
+  startUpRef: "/inboundCall/menus/menu[Main Menu_10]"
+  defaultLanguage: en-us
+  supportedLanguages:
+    en-us:
+      defaultLanguageSkill:
+        noValue: true
+      textToSpeech:
+        defaultEngine:
+          voice: Jill
+  initialGreeting:
+    tts: Welcome to Cloud Store
+  settingsActionDefaults:
+    playAudioOnSilence:
+      timeout:
+        lit:
+          seconds: 40
+    detectSilence:
+      timeout:
+        lit:
+          seconds: 40
+    callData:
+      processingPrompt:
+        noValue: true
+    callBridge:
+      processingPrompt:
+        noValue: true
+    collectInput:
+      noEntryTimeout:
+        lit:
+          seconds: 5
+    dialByExtension:
+      interDigitTimeout:
+        lit:
+          seconds: 6
+    transferToUser:
+      connectTimeout:
+        noValue: true
+    transferToNumber:
+      connectTimeout:
+        noValue: true
+    transferToGroup:
+      connectTimeout:
+        noValue: true
+    transferToFlowSecure:
+      connectTimeout:
+        lit:
+          seconds: 15
+  settingsErrorHandling:
+    errorHandling:
+      disconnect:
+        none: true
+    preHandlingAudio:
+      tts: Sorry, an error occurred. Please try your call again.
+  settingsMenu:
+    extensionDialingMaxDelay:
+      lit:
+        seconds: 1
+    listenForExtensionDialing:
+      lit: false
+    menuSelectionTimeout:
+      lit:
+        seconds: 10
+    repeatCount:
+      lit: 3
+  settingsPrompts:
+    ensureAudioInPrompts: false
+  settingsSpeechRec:
+    completeMatchTimeout:
+      lit:
+        ms: 100
+    incompleteMatchTimeout:
+      lit:
+        ms: 1500
+    maxSpeechLengthTimeout:
+      lit:
+        seconds: 20
+    minConfidenceLevel:
+      lit: 50
+    asrCompanyDir: none
+    asrEnabledOnFlow: true
+  menus:
+    - menu:
+        name: Main Menu
+        refId: Main Menu_10
+        audio:
+          tts: Press 1 to make a purchase,  press 9 to disconnect
+        settingsMenu:
+          extensionDialingMaxDelay:
+            noValue: true
+          listenForExtensionDialing:
+            lit: false
+          menuSelectionTimeout:
+            lit:
+              seconds: 15
+          repeatCount:
+            lit: 3
+        settingsSpeechRec:
+          completeMatchTimeout:
+            lit:
+              ms: 500
+          incompleteMatchTimeout:
+            noValue: true
+          maxSpeechLengthTimeout:
+            noValue: true
+          minConfidenceLevel:
+            noValue: true
+        choices:
+          - menuDisconnect:
+              name: Disconnect
+              dtmf: digit_9
+              globalDtmf: false
+              globalSpeechRecTerms: false
+          - menuJumpToTask:
+              name: Jump to Reusable Task
+              dtmf: digit_1
+              globalDtmf: false
+              globalSpeechRecTerms: false
+              targetTaskRef: "/inboundCall/tasks/task[New Task 1_13]"
+  tasks:
+    - task:
+        name: New Task 1
+        refId: New Task 1_13
+        actions:
+          - transferToFlowSecure:
+              name: Transfer to Secure Flow
+              targetFlow:
+                name: EventOrchestrator Secure Flow
+              connectTimeout:
+                noValue: true
+              preTransferAudio:
+                tts: Transfering you to payment call
+              invocationData:
+                lit: ""
+              failureTransferAudio:
+                tts: Failed to transfer call
+              failureOutputs:
+                errorType:
+                  noValue: true
+                errorMessage:
+                  noValue: true
+              outputs:
+                failure:
+                  actions:
+                    - playAudio:
+                        name: Play Audio
+                        audio:
+                          tts: Sorry there was an error. Please try again later
+          - disconnect:
+              name: Disconnect
