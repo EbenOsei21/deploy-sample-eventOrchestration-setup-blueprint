@@ -34,7 +34,7 @@ This blueprint demonstrates how to:
 - **[AWS Lambda](https://aws.amazon.com/lambda/ "Opens the AWS Lambda website")** - A serverless computing service for running code without creating or maintaining the underlying infrastructure.
 - **[AWS S3](https://aws.amazon.com/s3/ "Opens the AWS S3 website")** - An object storage service offering industry-leading scalability, data availability, security, and performance.
 - **[Python](https://www.python.org/ "Opens the NodeJs website")** - An interpreted, high-level programming language that is used to quickly build modularized, object-oriented programs.
-- **[Golang](https://go.dev/ "Opens golang website")** -  syntactically similar to C, Go is a statically typed, compiled programming language designed at Google.
+- **[Golang](https://go.dev/ "Opens golang website")** - syntactically similar to C, Go is a statically typed, compiled programming language designed at Google.
 
 ## Prerequisites
 
@@ -63,7 +63,9 @@ This blueprint demonstrates how to:
 
 - Terraform. For more information, see [Download Terraform](https://www.terraform.io/downloads) on the Terraform website.
 
+- Python version 3.8.10 or later. For more information, see [Download Python](https://www.python.org/downloads/) on the Python website.
 
+- Golang version go1.16 or later. For more information, see [Download Go](https://go.dev/dl/) on the Python website.
 
 ## Implementation steps
 
@@ -102,15 +104,13 @@ For more information, see [Create an OAuth client](https://help.mypurecloud.com/
 - **AWS_ACCESS_KEY_ID**: This is the id that identifies your AWS account
 - **AWS_SECRET_ACCESS_KEY**: This is the AWS secret that authorizes executions.
 
-
 ### Define Terraform variables
 
 - In the `terraform` directory, open the `variables.auto.tfvars`
 
-- Edit the variables to match your prefered configuration and save your changes. Make sure your s3 bucket name is [valid](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) 
+- Edit the variables to match your prefered configuration and save your changes. Make sure your s3 bucket name is [valid](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
 
 - Take note of the `aws_region` as well becuase the value should match your region.
-
 
 ### Deploy the infrastructure
 
@@ -128,12 +128,11 @@ This should create and deploy the infrastructure. This includes 3 flows(an inbou
 This blueprint comes with prebuilt go lambdas. If you decide to make any changes to the lambda code or even replace the whole thing, the code has to be built before deploying. The command to build golang lambda for AWS is `GOOS=linux GOARCH=amd64 go build -o <binary-destination>`. For example, if you make changes to `blueprint/lambda-paymentIdGenerator/cmd/main.go`, you have to open the terminal and set the working directory to `blueprint/lambda-paymentIdGenerator/cmd` and run the following command:
 
 ```bash
-GOOS=linux GOARCH=amd64 go build -o ../bin/main 
+GOOS=linux GOARCH=amd64 go build -o ../bin/main
 ```
 
-
-
 ## Additional resources
+
 - [Genesys Cloud Provider](https://registry.terraform.io/providers/MyPureCloud/genesyscloud/latest/docs) on Terraform website.
 - [AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) on Terraform.
 - [Deploy a simple IVR using Terraform, CX as Code, and Archy](/blueprints/simple-ivr-deploy-with-cx-as-code-blueprint/ "Goes Deploy a simple IVR using Terraform, CX as Code, and Archy blueprint") in the Genesys Cloud Developer Center.
