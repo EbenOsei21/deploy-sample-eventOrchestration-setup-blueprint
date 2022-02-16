@@ -6,9 +6,6 @@ CLIENT_SECRET = os.environ['GENESYSCLOUD_OAUTHCLIENT_SECRET']
 ENVIRONMENT = os.environ['GENESYSCLOUD_ENVIRONMENT']
 
 def main(workflowId): 
-    
-    if not workflowId:
-        sys.exit("Null error: worklow id not provided")
         
     # Base64 encode the client ID and client secret
     authorization = base64.b64encode(bytes(CLIENT_ID + ":" + CLIENT_SECRET, "ISO-8859-1")).decode("ascii")
