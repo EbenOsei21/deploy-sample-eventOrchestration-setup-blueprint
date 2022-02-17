@@ -65,7 +65,7 @@ This blueprint demonstrates how to:
 
 - Python version 3.8.10 or later. For more information, see [Download Python](https://www.python.org/downloads/) on the Python website.
 
-- Golang version go1.16 or later. For more information, see [Download Go](https://go.dev/dl/) on the Python website.
+- Golang version go1.16 or later. For more information, see [Download Go](https://go.dev/dl/) on the Go website.
 
 ## Implementation steps
 
