@@ -7,6 +7,7 @@ resource "aws_lambda_function" "lambda_function" {
   role             = aws_iam_role.lambda_execution_role.arn
   runtime          = local.go_runtime
   timeout          = local.lambda_timeout
+  depends_on       = [aws_s3_bucket.paymentdata_bucket]
 
   environment {
     variables = {

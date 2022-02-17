@@ -4,7 +4,7 @@
 environment = "dev"
 
 /*Genesys Cloud Organization Id*/
-organizationId = "<ORGID>"
+organizationId = "<ORG_ID"
 
 /*Aws region where the resources to be provisioned.i.e us-east-1 */
 aws_region = "<REGION>"
@@ -16,7 +16,7 @@ saveData_prefix =  "saveUserData"
 generatePaymentId_prefix = "generate_paymentId"
 
 /* s3 bucket name*/
-bucket_name = "payment-data-save"
+bucket_name = "saved-payment-data"
 
 /* s3 bucket tag*/
 bucket_tag = "saved user data"

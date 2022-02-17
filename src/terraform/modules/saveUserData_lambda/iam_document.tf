@@ -21,9 +21,10 @@ data "aws_iam_policy_document" "lambda_execution_policy_document" {
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
       "logs:PutLogEvents",
-      "s3:PutObject" 
+      "s3:PutObject", 
+      "s3:GetObject"
     ]
-    resources = ["*"]
+    resources = ["arn:aws:s3:::${var.bucket_name}/*"]
   }
 }
 
