@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "lambda_function" {
   function_name    = "${local.resource_name_prefix}-lambda"
-  description      = "Lambda to generate a random number"
+  description      = "Lambda to generate a random number that acts as payment id"
   filename         = var.lambda_zip_file
   handler          = "main"
   source_code_hash = var.lambda_zip_file

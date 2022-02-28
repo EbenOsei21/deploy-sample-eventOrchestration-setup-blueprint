@@ -44,10 +44,17 @@ def main(workflowId):
             "id": f"{workflowId}"
             },
             "enabled": "true",
-        "matchCriteria": [],
-            "name": "Call Disconnected Trigger",
-            "topicName": "v2.detail.events.conversation.{id}.customer.end",
+        "matchCriteria": [
+            {
+              "jsonPath": "mediaType",
+              "operator": "Equal",
+              "value": "VOICE"
+            }
+        ],
+        "name": "Call Disconnected Trigger",
+        "topicName": "v2.detail.events.conversation.{id}.customer.end",
     }
+    
     response = requests.post(f"https://api.{ENVIRONMENT}/platform/api/v2/processautomation/triggers", data=json.dumps(request_body), headers=requestHeaders)
 
     # Check response
@@ -60,5 +67,7 @@ def main(workflowId):
                                                                                             
     
 if __name__ == '__main__':
+    if len(sys.argv) < 1:
+        sys.exit("Input error: workflowId required")
     main((sys.argv[1]))
         

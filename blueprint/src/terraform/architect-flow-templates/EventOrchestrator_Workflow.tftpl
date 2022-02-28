@@ -57,9 +57,9 @@ workflow:
                                     lit:
                                       minutes: 1
                                   category:
-                                    dev-saveUserData-Lambda:
+                                    ${dataAction}-Lambda:
                                       dataAction:
-                                        dev-saveUserData-data-action:
+                                        ${dataAction}-data-action:
                                           inputs:
                                             paymentId:
                                               exp: Flow.paymentId
